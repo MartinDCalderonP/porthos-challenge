@@ -23,11 +23,18 @@ const Home = () => {
       <CitiesSelect />
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
+
       {!currentWeatherData && !loading && !error && (
         <div>No data. Please select another city.</div>
       )}
-      {currentWeatherData && <CurrentWeather {...currentWeatherData} />}
-      {nextThreeDays && <ForecastCardsContainer forecastData={nextThreeDays} />}
+
+      {currentWeatherData && !loading && !error && (
+        <CurrentWeather {...currentWeatherData} />
+      )}
+
+      {nextThreeDays && !loading && !error && (
+        <ForecastCardsContainer forecastData={nextThreeDays} />
+      )}
     </>
   )
 }
