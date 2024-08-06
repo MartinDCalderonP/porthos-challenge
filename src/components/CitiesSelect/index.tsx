@@ -1,13 +1,13 @@
 import { ChangeEvent } from 'react'
 import styles from './styles.module.css'
-import cities from './cities'
+import citiesList from '../../assets/citiesList'
 
-interface CitiesListProps {
+interface CitiesSelectProps {
   selectedCity: string
   setSelectedCity: (city: string) => void
 }
 
-const CitiesList = ({ selectedCity, setSelectedCity }: CitiesListProps) => {
+const CitiesSelect = ({ selectedCity, setSelectedCity }: CitiesSelectProps) => {
   const handleCityChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value
     setSelectedCity(value)
@@ -19,7 +19,7 @@ const CitiesList = ({ selectedCity, setSelectedCity }: CitiesListProps) => {
       value={selectedCity}
       onChange={handleCityChange}
     >
-      {cities.map((city) => (
+      {citiesList.map((city) => (
         <option key={city.city} value={`${city.city},${city.countryCode}`}>
           {city.city}
         </option>
@@ -28,4 +28,4 @@ const CitiesList = ({ selectedCity, setSelectedCity }: CitiesListProps) => {
   )
 }
 
-export default CitiesList
+export default CitiesSelect

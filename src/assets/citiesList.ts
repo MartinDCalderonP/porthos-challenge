@@ -1,4 +1,4 @@
-const cities = [
+const citiesList = [
   { countryCode: 'AR', city: 'Buenos Aires' },
   { countryCode: 'BD', city: 'Dhaka' },
   { countryCode: 'BR', city: 'Brasilia' },
@@ -21,4 +21,4 @@ const cities = [
   { countryCode: 'US', city: 'Washington, D.C. ' }
 ]
 
-export default cities
+export default citiesList
