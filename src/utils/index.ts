@@ -27,9 +27,24 @@ export const getCurrentWeatherData = (data: Weather) => {
   return {
     description: weather[0].description,
     feels_like: main.feels_like,
+    humidity: main.humidity,
     icon: weather[0].icon,
+    pressure: main.pressure,
     temp_max: main.temp_max,
     temp_min: main.temp_min,
-    temp: main.temp
+    temp: main.temp,
+    visibility: data.visibility,
+    wind_deg: data.wind.deg,
+    wind_speed: data.wind.speed
   }
+}
+
+export const windDirection = (deg: number) => {
+  const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
+  const value = Math.floor(deg / 45)
+  return directions[value % 8]
+}
+
+export const capitalizeFirstLetter = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
