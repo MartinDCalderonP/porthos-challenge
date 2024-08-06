@@ -20,7 +20,7 @@ const CitiesList = ({ selectedCity, setSelectedCity }: CitiesListProps) => {
       onChange={handleCityChange}
     >
       {cities.map((city) => (
-        <option key={city.city} value={city.city}>
+        <option key={city.city} value={`${city.city},${city.countryCode}`}>
           {city.city}
         </option>
       ))}
