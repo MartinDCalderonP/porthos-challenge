@@ -84,7 +84,8 @@ export const getNextThreeDaysForecast = (data: Forecast) => {
 
     const minTemp = Math.min(...filteredData.map((item) => item.main.temp_min))
     const maxTemp = Math.max(...filteredData.map((item) => item.main.temp_max))
-    const { icon } = filteredData[0].weather[0]
+
+    const { description, icon } = filteredData[0].weather[0]
 
     const formattedDate = nextDay.toLocaleDateString('en-US', {
       weekday: 'long'
@@ -92,6 +93,7 @@ export const getNextThreeDaysForecast = (data: Forecast) => {
 
     nextThreeDays.push({
       day: formattedDate,
+      description,
       minTemp,
       maxTemp,
       icon
