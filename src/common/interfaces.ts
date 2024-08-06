@@ -3,33 +3,76 @@ export interface CitiesListItem {
   countryCode: string
 }
 
-export interface Weather {
-  coord: { lon: number; lat: number }
-  weather: { id: number; main: string; description: string; icon: string }[]
-  base: string
-  main: {
-    temp: number
-    feels_like: number
-    temp_min: number
-    temp_max: number
-    pressure: number
-    humidity: number
-    sea_level: number
-    grnd_level: number
-  }
-  visibility: number
-  wind: { speed: number; deg: number; gust: number }
-  clouds: { all: number }
-  dt: number
-  sys: {
-    type: number
-    id: number
-    country: string
-    sunrise: number
-    sunset: number
-  }
-  timezone: number
+export interface Forecast {
+  cod: string
+  message: number
+  cnt: number
+  list: List[]
+  city: City
+}
+
+interface City {
   id: number
   name: string
-  cod: number
+  coord: Coord
+  country: string
+  population: number
+  timezone: number
+  sunrise: number
+  sunset: number
+}
+
+interface Coord {
+  lat: number
+  lon: number
+}
+
+interface List {
+  dt: number
+  main: Main
+  weather: Weather[]
+  clouds: Clouds
+  wind: Wind
+  visibility: number
+  pop: number
+  rain?: Rain
+  sys: Sys
+  dt_txt: Date
+}
+
+interface Clouds {
+  all: number
+}
+
+interface Main {
+  temp: number
+  feels_like: number
+  temp_min: number
+  temp_max: number
+  pressure: number
+  sea_level: number
+  grnd_level: number
+  humidity: number
+  temp_kf: number
+}
+
+interface Rain {
+  '3h': number
+}
+
+interface Sys {
+  pod: string
+}
+
+interface Weather {
+  id: number
+  main: string
+  description: string
+  icon: string
+}
+
+interface Wind {
+  speed: number
+  deg: number
+  gust: number
 }
