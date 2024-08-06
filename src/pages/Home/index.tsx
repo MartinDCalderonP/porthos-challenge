@@ -3,13 +3,13 @@ import CurrentWeather from '../../components/CurrentWeather'
 import useSelectedCity from '../../hooks/useSelectedCity'
 import useFetch from '../../hooks/useFetch'
 import { getCurrentWeatherData, generateApiUrl } from '../../utils'
-import { Weather } from '../../common/interfaces'
+import { Forecast } from '../../common/interfaces'
 
 const Home = () => {
   const { selectedCity } = useSelectedCity()
   const url = generateApiUrl(selectedCity)
   const { data, error, loading } = useFetch(url)
-  const currentWeatherData = getCurrentWeatherData(data as Weather)
+  const currentWeatherData = getCurrentWeatherData(data as Forecast)
 
   return (
     <>
