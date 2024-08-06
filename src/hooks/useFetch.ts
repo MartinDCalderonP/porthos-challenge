@@ -6,12 +6,16 @@ interface UseFetch<T> {
   error: Error | null
 }
 
-const useFetch = <T>(url: string): UseFetch<T> => {
+const useFetch = <T>(url: string | null): UseFetch<T> => {
   const [data, setData] = useState<T | null>(null)
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
+    if (!url) return
+
+    setLoading(true)
+
     const fetchData = async () => {
       try {
         const response = await fetch(url)
