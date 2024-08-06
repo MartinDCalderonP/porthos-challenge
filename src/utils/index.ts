@@ -5,7 +5,7 @@ export const generateApiUrl = (selectedCity: string) => {
 
   return `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${
     import.meta.env.VITE_API_KEY
-  }`
+  }&units=metric`
 }
 
 export const getDefaultCity = (citiesList: City[]) => {
