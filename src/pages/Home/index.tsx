@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CitiesList from '../../components/CitiesList'
+import CitiesSelect from '../../components/CitiesSelect'
 
 const Home = () => {
   const [selectedCity, setSelectedCity] = useState('')
@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       <h1>Weather App</h1>
-      <CitiesList
+      <CitiesSelect
         selectedCity={selectedCity}
         setSelectedCity={setSelectedCity}
       />
