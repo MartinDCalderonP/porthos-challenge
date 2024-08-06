@@ -1,4 +1,4 @@
-export interface City {
+export interface CitiesListItem {
   city: string
   countryCode: string
 }
