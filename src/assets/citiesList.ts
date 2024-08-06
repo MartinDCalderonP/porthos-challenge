@@ -1,4 +1,6 @@
-const citiesList = [
+import { City } from '../common/interfaces'
+
+const citiesList: City[] = [
   { countryCode: 'AR', city: 'Buenos Aires' },
   { countryCode: 'BD', city: 'Dhaka' },
   { countryCode: 'BR', city: 'Brasilia' },
