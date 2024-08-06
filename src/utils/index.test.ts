@@ -10,4 +10,12 @@ describe('generateGeocodingApiUrl', () => {
 
     expect(apiUrl).toContain(expectedUrl)
   })
+
+  test('should return null if no city is provided', () => {
+    const selectedCity = ''
+
+    const apiUrl = generateGeocodingApiUrl(selectedCity)
+
+    expect(apiUrl).toBeNull()
+  })
 })
