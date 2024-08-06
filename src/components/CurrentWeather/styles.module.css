@@ -1,0 +1,18 @@
+.currentWeatherContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1.25rem;
+
+  .weatherIcon {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  p {
+    margin: 0;
+  }
+}
