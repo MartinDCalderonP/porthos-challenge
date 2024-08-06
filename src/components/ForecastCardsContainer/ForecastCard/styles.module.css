@@ -1,0 +1,26 @@
+.forecastCard {
+  align-items: center;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 6.25rem;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: #303030;
+  width: 5rem;
+
+  h4,
+  p {
+    color: #fff;
+    margin: 0;
+  }
+
+  h4 {
+    font-size: 0.875rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+  }
+}
