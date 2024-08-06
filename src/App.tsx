@@ -1,11 +1,14 @@
 import styles from './App.module.css'
+import SelectedCityProvider from './context/SelectedCityProvider'
 import Home from './pages/Home'
 
 const App = () => {
   return (
-    <div className={styles.mainContainer}>
-      <Home />
-    </div>
+    <SelectedCityProvider>
+      <div className={styles.mainContainer}>
+        <Home />
+      </div>
+    </SelectedCityProvider>
   )
 }
 
