@@ -10,7 +10,7 @@ const ForecastCardsContainer = ({
 }: ForecastCardsContainerProps) => {
   return (
     <>
-      <h3>Next Three Days</h3>
+      <h3 className={styles.nextThreeDaysTitle}>Next Three Days</h3>
 
       <div className={styles.forecastCardsContainer}>
         {forecastData.map((item, index) => (
