@@ -14,3 +14,7 @@ export const getDefaultCity = (citiesList: City[]) => {
 
   return defaultCity
 }
+
+export const getIconUrl = (icon: string) => {
+  return `http://openweathermap.org/img/wn/${icon}.png`
+}
