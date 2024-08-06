@@ -37,10 +37,10 @@ const CurrentWeather = ({
         <img src={getIconUrl(icon)} alt={description} />
         <figcaption>{capitalizedDescription}</figcaption>
       </picture>
-      <h2>Current weather: {temp}°C</h2>
-      <p>Feels like: {feels_like}°C</p>
+      <h2>Current weather: {Math.round(temp)}°C</h2>
+      <p>Feels like: {Math.round(feels_like)}°C</p>
       <p>
-        Min: {temp_min}°C | Max: {temp_max}°C
+        Min: {Math.round(temp_min)}°C | Max: {Math.round(temp_max)}°C
       </p>
       <p>
         Humidity: {humidity}% | Pressure: {pressure} hPa
