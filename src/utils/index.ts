@@ -1,14 +1,14 @@
-import { City, Weather } from '../common/interfaces'
+import { CitiesListItem, Forecast } from '../common/interfaces'
 
 export const generateApiUrl = (selectedCity: string) => {
   if (!selectedCity) return null
 
-  return `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${
+  return `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&appid=${
     import.meta.env.VITE_API_KEY
   }&units=metric`
 }
 
-export const getDefaultCity = (citiesList: City[]) => {
+export const getDefaultCity = (citiesList: CitiesListItem[]) => {
   const firstCity = citiesList[0]
   const defaultCity = `${firstCity.city},${firstCity.countryCode}`
 
@@ -19,23 +19,27 @@ export const getIconUrl = (icon: string) => {
   return `http://openweathermap.org/img/wn/${icon}.png`
 }
 
-export const getCurrentWeatherData = (data: Weather) => {
-  if (!data) return null
+export const getCurrentWeatherData = (data: Forecast) => {
+  if (!data?.list) return null
 
-  const { main, weather } = data
+  const { main, visibility, weather, wind } = data.list[0]
+
+  const { feels_like, humidity, pressure, temp, temp_max, temp_min } = main
+  const { description, icon } = weather[0]
+  const { deg: wind_deg, speed: wind_speed } = wind
 
   return {
-    description: weather[0].description,
-    feels_like: main.feels_like,
-    humidity: main.humidity,
-    icon: weather[0].icon,
-    pressure: main.pressure,
-    temp_max: main.temp_max,
-    temp_min: main.temp_min,
-    temp: main.temp,
-    visibility: data.visibility,
-    wind_deg: data.wind.deg,
-    wind_speed: data.wind.speed
+    description,
+    feels_like,
+    humidity,
+    icon,
+    pressure,
+    temp_max,
+    temp_min,
+    temp,
+    visibility,
+    wind_deg,
+    wind_speed
   }
 }
 
