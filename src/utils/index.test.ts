@@ -1,12 +1,12 @@
-import { generateGeocodingApiUrl } from '../utils'
+import { generateApiUrl } from '../utils'
 import { describe, test, expect } from 'vitest'
 
-describe('generateGeocodingApiUrl', () => {
-  test('should generate the correct geocoding API URL', () => {
+describe('generateApiUrl', () => {
+  test('should generate the correct API URL', () => {
     const selectedCity = 'New York,us'
     const expectedUrl = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=`
 
-    const apiUrl = generateGeocodingApiUrl(selectedCity)
+    const apiUrl = generateApiUrl(selectedCity)
 
     expect(apiUrl).toContain(expectedUrl)
   })
@@ -14,7 +14,7 @@ describe('generateGeocodingApiUrl', () => {
   test('should return null if no city is provided', () => {
     const selectedCity = ''
 
-    const apiUrl = generateGeocodingApiUrl(selectedCity)
+    const apiUrl = generateApiUrl(selectedCity)
 
     expect(apiUrl).toBeNull()
   })

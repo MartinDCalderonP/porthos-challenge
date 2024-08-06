@@ -1,6 +1,6 @@
 import { City } from '../common/interfaces'
 
-export const generateGeocodingApiUrl = (selectedCity: string) => {
+export const generateApiUrl = (selectedCity: string) => {
   if (!selectedCity) return null
 
   return `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${
