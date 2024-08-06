@@ -1,25 +1,33 @@
 import styles from './styles.module.css'
-import { Weather } from '../../common/interfaces'
 import { getIconUrl } from '../../utils'
 
 interface CurrentWeatherProps {
-  weatherData: Weather
+  description: string
+  feels_like: number
+  icon: string
+  temp_max: number
+  temp_min: number
+  temp: number
 }
 
-const CurrentWeather = ({ weatherData }: CurrentWeatherProps) => {
+const CurrentWeather = ({
+  description,
+  feels_like,
+  icon,
+  temp_max,
+  temp_min,
+  temp
+}: CurrentWeatherProps) => {
   return (
     <div className={styles.currentWeatherContainer}>
       <picture className={styles.weatherIcon}>
-        <img
-          src={getIconUrl(weatherData.weather[0].icon)}
-          alt={weatherData.weather[0].description}
-        />
-        <figcaption>{weatherData.weather[0].description}</figcaption>
+        <img src={getIconUrl(icon)} alt={description} />
+        <figcaption>{description}</figcaption>
       </picture>
-      <h2>Current weather: {weatherData.main.temp}°C</h2>
-      <p>Feels like: {weatherData.main.feels_like}°C</p>
+      <h2>Current weather: {temp}°C</h2>
+      <p>Feels like: {feels_like}°C</p>
       <p>
-        Min: {weatherData.main.temp_min}°C | Max: {weatherData.main.temp_max}
+        Min: {temp_min}°C | Max: {temp_max}
         °C Min
       </p>
     </div>
