@@ -2,14 +2,20 @@ import CitiesSelect from '../../components/CitiesSelect'
 import CurrentWeather from '../../components/CurrentWeather'
 import useSelectedCity from '../../hooks/useSelectedCity'
 import useFetch from '../../hooks/useFetch'
-import { getCurrentWeatherData, generateApiUrl } from '../../utils'
+import {
+  generateApiUrl,
+  getCurrentWeatherData,
+  getNextThreeDaysForecast
+} from '../../utils'
 import { Forecast } from '../../common/interfaces'
+import ForecastCardsContainer from '../../components/ForecastCardsContainer'
 
 const Home = () => {
   const { selectedCity } = useSelectedCity()
   const url = generateApiUrl(selectedCity)
   const { data, error, loading } = useFetch(url)
   const currentWeatherData = getCurrentWeatherData(data as Forecast)
+  const nextThreeDays = getNextThreeDaysForecast(data as Forecast)
 
   return (
     <>
@@ -21,6 +27,7 @@ const Home = () => {
         <div>No data. Please select another city.</div>
       )}
       {currentWeatherData && <CurrentWeather {...currentWeatherData} />}
+      {nextThreeDays && <ForecastCardsContainer forecastData={nextThreeDays} />}
     </>
   )
 }
