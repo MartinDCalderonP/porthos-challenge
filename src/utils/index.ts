@@ -52,3 +52,51 @@ export const windDirection = (deg: number) => {
 export const capitalizeFirstLetter = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
+export const getNextThreeDaysForecast = (data: Forecast) => {
+  if (!data?.list) return null
+
+  const today = new Date()
+  const todayDate = today.getDate()
+  const todayMonth = today.getMonth()
+  const todayYear = today.getFullYear()
+
+  const nextThreeDays = []
+
+  for (let i = 1; i <= 3; i++) {
+    const nextDay = new Date(todayYear, todayMonth, todayDate + i)
+    const nextDayDate = nextDay.getDate()
+    const nextDayMonth = nextDay.getMonth()
+    const nextDayYear = nextDay.getFullYear()
+
+    const filteredData = data.list.filter((item) => {
+      const itemDate = new Date(item.dt_txt)
+      const itemDateDate = itemDate.getDate()
+      const itemDateMonth = itemDate.getMonth()
+      const itemDateYear = itemDate.getFullYear()
+
+      return (
+        itemDateDate === nextDayDate &&
+        itemDateMonth === nextDayMonth &&
+        itemDateYear === nextDayYear
+      )
+    })
+
+    const minTemp = Math.min(...filteredData.map((item) => item.main.temp_min))
+    const maxTemp = Math.max(...filteredData.map((item) => item.main.temp_max))
+    const { icon } = filteredData[0].weather[0]
+
+    const formattedDate = nextDay.toLocaleDateString('en-US', {
+      weekday: 'long'
+    })
+
+    nextThreeDays.push({
+      day: formattedDate,
+      minTemp,
+      maxTemp,
+      icon
+    })
+  }
+
+  return nextThreeDays
+}
