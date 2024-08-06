@@ -1,4 +1,4 @@
-import { City } from '../common/interfaces'
+import { City, Weather } from '../common/interfaces'
 
 export const generateApiUrl = (selectedCity: string) => {
   if (!selectedCity) return null
@@ -17,4 +17,19 @@ export const getDefaultCity = (citiesList: City[]) => {
 
 export const getIconUrl = (icon: string) => {
   return `http://openweathermap.org/img/wn/${icon}.png`
+}
+
+export const getCurrentWeatherData = (data: Weather) => {
+  if (!data) return null
+
+  const { main, weather } = data
+
+  return {
+    description: weather[0].description,
+    feels_like: main.feels_like,
+    icon: weather[0].icon,
+    temp_max: main.temp_max,
+    temp_min: main.temp_min,
+    temp: main.temp
+  }
 }
