@@ -1,13 +1,11 @@
 import { ChangeEvent } from 'react'
 import styles from './styles.module.css'
 import citiesList from '../../assets/citiesList'
+import useSelectedCity from '../../hooks/useSelectedCity'
 
-interface CitiesSelectProps {
-  selectedCity: string
-  setSelectedCity: (city: string) => void
-}
+const CitiesSelect = () => {
+  const { selectedCity, setSelectedCity } = useSelectedCity()
 
-const CitiesSelect = ({ selectedCity, setSelectedCity }: CitiesSelectProps) => {
   const handleCityChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value
     setSelectedCity(value)
