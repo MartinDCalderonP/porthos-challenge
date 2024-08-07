@@ -3,7 +3,7 @@ import renderWithProviders from '../../../utils/renderWithProviders'
 import { describe, expect, test } from 'vitest'
 
 describe('ForecastCard', () => {
-  const forecast = {
+  const mockForecast = {
     day: 'Tuesday',
     description: 'Sunny',
     minTemp: 20,
@@ -13,7 +13,7 @@ describe('ForecastCard', () => {
 
   test('renders the forecast', () => {
     const { getByText, getByAltText } = renderWithProviders(
-      <ForecastCard {...forecast} />
+      <ForecastCard {...mockForecast} />
     )
 
     expect(getByText('Tuesday')).toBeInTheDocument()
