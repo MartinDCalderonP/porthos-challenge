@@ -57,15 +57,14 @@ export const getNextThreeDaysForecast = (data: Forecast) => {
   if (!data?.list) return null
 
   const today = new Date()
-  const todayDate = today.getDate()
-  const todayMonth = today.getMonth()
-  const todayYear = today.getFullYear()
 
   const nextThreeDays = []
 
   for (let i = 1; i <= 3; i++) {
-    const nextDay = new Date(todayYear, todayMonth, todayDate + i)
-    const nextDayDate = nextDay.getDate()
+    const nextDay = new Date(today)
+    nextDay.setDate(nextDay.getDate() + i)
+
+    const nextDayDate = nextDay.getDate() + 1
     const nextDayMonth = nextDay.getMonth()
     const nextDayYear = nextDay.getFullYear()
 
@@ -81,6 +80,8 @@ export const getNextThreeDaysForecast = (data: Forecast) => {
         itemDateYear === nextDayYear
       )
     })
+
+    console.log(filteredData)
 
     const minTemp = Math.min(...filteredData.map((item) => item.main.temp_min))
     const maxTemp = Math.max(...filteredData.map((item) => item.main.temp_max))
