@@ -1,9 +1,4 @@
-allowBuilds:
-  esbuild: set this to true or false
 minimumReleaseAgeExclude:
   - esbuild@0.24.3
   - vite@6.4.2
-  - postcss@8.5.10
-  - brace-expansion@5.0.6
-  - ws@8.20.1
   - vitest@4.1.0
